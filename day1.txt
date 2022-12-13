@@ -1,0 +1,36 @@
+mysql> desc gmp;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| gid   | int         | NO   | PRI | NULL    |       |
+| gname | varchar(20) | YES  |     | NULL    |       |
+| pid   | int         | YES  | MUL | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> create table emp(eid int,ename varchar(20),address varchar(20),mobile long,days int,wages int,gid int,pid int,foreign key(gid) references gmp(gid));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc emp;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| eid     | int         | YES  |     | NULL    |       |
+| ename   | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(20) | YES  |     | NULL    |       |
+| mobile  | mediumtext  | YES  |     | NULL    |       |
+| days    | int         | YES  |     | NULL    |       |
+| wages   | int         | YES  |     | NULL    |       |
+| gid     | int         | YES  | MUL | NULL    |       |
+| pid     | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> desc project;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| pid   | int         | NO   | PRI | NULL    |       |
+| pname | varchar(30) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
