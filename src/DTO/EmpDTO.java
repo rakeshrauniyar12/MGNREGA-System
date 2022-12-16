@@ -1,25 +1,27 @@
 package DTO;
 
 public class EmpDTO {
+	private int eid;
 	   private String ename;
-	   private String address;
-	   private long mobile;
+	   private int gid;
 	   private int days;
 	   private int wages;
-	   private String gname;
-	   private String pname;
-	   public EmpDTO() {
-			super();
-		}
-	public EmpDTO(String ename, String address, long mobile, int days, int wages, String gname, String pname) {
+	public EmpDTO() {
 		super();
+	}
+	public EmpDTO(String ename, int gid, int days, int wages,int eid) {
+		super();
+		this.eid=eid;
 		this.ename = ename;
-		this.address = address;
-		this.mobile = mobile;
+		this.gid = gid;
 		this.days = days;
 		this.wages = wages;
-		this.gname = gname;
-		this.pname = pname;
+	}
+	public int getEid() {
+		return eid;
+	}
+	public void setEid(int eid) {
+		this.eid = eid;
 	}
 	public String getEname() {
 		return ename;
@@ -27,17 +29,11 @@ public class EmpDTO {
 	public void setEname(String ename) {
 		this.ename = ename;
 	}
-	public String getAddress() {
-		return address;
+	public int getGid() {
+		return gid;
 	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public long getMobile() {
-		return mobile;
-	}
-	public void setMobile(long mobile) {
-		this.mobile = mobile;
+	public void setGid(int gid) {
+		this.gid = gid;
 	}
 	public int getDays() {
 		return days;
@@ -51,22 +47,11 @@ public class EmpDTO {
 	public void setWages(int wages) {
 		this.wages = wages;
 	}
-	public String getGname() {
-		return gname;
-	}
-	public void setGname(String gname) {
-		this.gname = gname;
-	}
-	public String getPname() {
-		return pname;
-	}
-	public void setPname(String pname) {
-		this.pname = pname;
-	}
 	@Override
 	public String toString() {
-		return "EmpDTO [ename=" + ename + ", address=" + address + ", mobile=" + mobile + ", days=" + days + ", wages="
-				+ wages + ", gname=" + gname + ", pname=" + pname + "]";
+		return "EmpDTO [ename=" + ename +", eid"+ eid +", gid=" + gid + ", days=" + days + ", wages=" + wages + "]";
 	}
 	   
+	   
 }
+
