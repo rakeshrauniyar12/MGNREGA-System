@@ -1,18 +1,12 @@
 package DAO;
 
-import java.util.List;
-
-import Exception.BDOException;
-import Exception.EmpException;
-import Model.Employee;
-import Model.GPM;
-import Model.Project;
+import java.sql.Date;
 
 public interface BdoInter {
-       public String createProject(int pid,String pname) throws BDOException;
+      public String createProject(int pid,String pname,Date issue_date,Date end_date) throws BDOException;
        public List<Project> showAllProject() throws BDOException;
-       public String createNewGPM(int gpmid,String gname,String gemail,String gpassword) throws BDOException;
-       public List<GPM> viewAllTheGPM() throws EmpException;
-       public String allocatesProjectToGpm(int id,String gname,int pid) throws BDOException;
-       public List<Employee> viewAllDetailsOfEmp() throws EmpException;
+       public String createNewGPM(int gid,String gname,String gemail,String gpassword) throws BDOException;
+       public List<GPM> viewAllTheGPM() throws GmpException;
+       public String allocatesProjectToGpm(int gid,String gname,int pid,Date allocates_date) throws BDOException;
+       public List<EmpDTO> viewAllDetailsOfEmp(int gid,int pid) throws EmpException;
 }
