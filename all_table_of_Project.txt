@@ -1,0 +1,48 @@
+
+mysql> desc project;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| pid        | int         | NO   | PRI | NULL    |       |
+| pname      | varchar(20) | NO   |     | NULL    |       |
+| issue_date | date        | NO   |     | NULL    |       |
+| end_date   | date        | NO   |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc gmp;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| gid       | int         | NO   | PRI | NULL    |       |
+| gname     | varchar(20) | YES  |     | NULL    |       |
+| gemail    | varchar(20) | YES  |     | NULL    |       |
+| gpassword | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc gmpwork;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| gid       | int         | NO   | PRI | NULL    |       |
+| gname     | varchar(20) | YES  |     | NULL    |       |
+| pid       | int         | YES  | MUL | NULL    |       |
+| alot_date | date        | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> desc emp;
++---------+-------------+------+-----+---------+----------------+
+| Field   | Type        | Null | Key | Default | Extra          |
++---------+-------------+------+-----+---------+----------------+
+| eid     | int         | NO   | PRI | NULL    | auto_increment |
+| ename   | varchar(20) | NO   |     | NULL    |                |
+| address | varchar(20) | NO   |     | NULL    |                |
+| mobile  | mediumtext  | NO   |     | NULL    |                |
+| days    | int         | NO   |     | NULL    |                |
+| wages   | int         | NO   |     | NULL    |                |
+| gid     | int         | YES  | MUL | NULL    |                |
+| pid     | int         | YES  | MUL | NULL    |                |
++---------+-------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
