@@ -1,27 +1,18 @@
 package Model;
 
 public class Employee {
-   private int eid;
-   private String ename;
-   private String address;
-   private long mobile;
-   private int days;
-   private int wages;
-   private int gid;
-   private int pid;
-public Employee() {
-	super();
-}
-public Employee(int eid, String ename, String address, long mobile, int days, int wages, int gid, int pid) {
-	super();
-	this.eid = eid;
-	this.ename = ename;
-	this.address = address;
-	this.mobile = mobile;
-	this.days = days;
-	this.wages = wages;
-	this.gid = gid;
-	this.pid = pid;
+  private int eid;
+  private String ename;
+  private String address;
+  private int days;
+  private int wages;
+  private int gid;
+  private int pid;
+  private long mobile;
+@Override
+public String toString() {
+	return "Employee [eid=" + eid + ", ename=" + ename + ", address=" + address + ", days=" + days + ", wages=" + wages
+			+ ", gid=" + gid + ", pid=" + pid + ", mobile=" + mobile + "]";
 }
 public int getEid() {
 	return eid;
@@ -40,12 +31,6 @@ public String getAddress() {
 }
 public void setAddress(String address) {
 	this.address = address;
-}
-public long getMobile() {
-	return mobile;
-}
-public void setMobile(long mobile) {
-	this.mobile = mobile;
 }
 public int getDays() {
 	return days;
@@ -71,10 +56,28 @@ public int getPid() {
 public void setPid(int pid) {
 	this.pid = pid;
 }
-@Override
-public String toString() {
-	return "Employee [eid=" + eid + ", ename=" + ename + ", address=" + address + ", mobile=" + mobile + ", days="
-			+ days + ", wages=" + wages + ", gid=" + gid + ", pid=" + pid + "]";
+public long getMobile() {
+	return mobile;
 }
+public void setMobile(long mobile) {
+	this.mobile = mobile;
+}
+public Employee(int eid, String ename, String address, int days, int wages, int gid, int pid, long mobile) {
+	super();
+	this.eid = eid;
+	this.ename = ename;
+	this.address = address;
+	this.days = days;
+	this.wages = wages;
+	this.gid = gid;
+	this.pid = pid;
+	this.mobile = mobile;
+}
+public Employee() {
+	super();
+}
+
+
    
 }
+
