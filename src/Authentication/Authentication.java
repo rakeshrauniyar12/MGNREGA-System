@@ -25,7 +25,6 @@ public class Authentication {
 	public static void main(String[] args) throws AutheException, BDOException {
 		
 		 Scanner sc= new Scanner(System.in);
-		
 		 System.out.println("Enter Login Credential");
 		 System.out.println("Enter Email");
          String email=sc.next();
@@ -75,11 +74,13 @@ public class Authentication {
         			 String date1=sc.next();
         			 String str= cr.createProject(id, name, date, date1);
         			 System.out.println(str);
+        			 break;
         		 case 2: 
         		     List<Project> list=cr.showAllProject(); 
         		     for(Project p:list) {
         		    	 System.out.println(p);
         		     }
+        		     break;
         		 case 3: 
         			 System.out.println("Enter Gid");
         			 int id1=sc.nextInt();
@@ -91,6 +92,7 @@ public class Authentication {
         			 String pass1=sc.next();
         			String mass= cr.createNewGPM(id1, name1, email1, pass1);
         			System.out.println(mass);
+        			break;
         		 case 4: 
         		     List<GPM> list1;
 					try {
@@ -102,6 +104,7 @@ public class Authentication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					break;
         		 case 5:
         			 System.out.println("Enter Gid");
         			 int id2=sc.nextInt();
@@ -113,6 +116,7 @@ public class Authentication {
         			 String date2=sc.next();
         			 String massage=cr.allocatesProjectToGpm(id2, name2, pid, date2);
         		     System.out.println(massage);
+        		     break;
         		 case 6:
         			 System.out.println("Enter Gid");
         			 int id3=sc.nextInt();
@@ -128,6 +132,7 @@ public class Authentication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} 
+					break;
         		 case 7:
         			 return;
         		 }
@@ -147,7 +152,7 @@ public class Authentication {
         		 System.out.println("2:- "+"View All Details Of Employee");
         		 System.out.println("3:- "+"Assign Employee To Project");
         		 System.out.println("4:- "+"View All Wages And Days");
-        		 System.out.println("7:- "+"Log Out");
+        		 System.out.println("5:- "+"Log Out");
         		 System.out.println("Enter Number Which You want to do...");
         		 int h=sc.nextInt();
         		 GmpInter gm= new GmpImpl();
@@ -176,6 +181,7 @@ public class Authentication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					break;
         		 case 2:
         			 try {
 						List<Employee> list=gm.viewAlDetailsOfEmp();
@@ -186,6 +192,7 @@ public class Authentication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+        			 break;
         		 case 3:
         			 System.out.println("Enter Pid");
         			 int pid1=sc.nextInt();
@@ -198,6 +205,7 @@ public class Authentication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+        			 break;
         		 case 4:
         			 System.out.println("Enter Pid");
         			 int pid2=sc.nextInt();
@@ -210,7 +218,8 @@ public class Authentication {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				 case 5: return;
+        			 break;
+        		 case 5: return;
         		 }
         		 return;
         	 }
