@@ -49,9 +49,8 @@ public class EmpDTO {
 	}
 	@Override
 	public String toString() {
-		return "EmpDTO [ename=" + ename +", eid"+ eid +", gid=" + gid + ", days=" + days + ", wages=" + wages + "]";
+		return "EmpDTO [ename=" + ename +", eid="+ eid +", gid=" + gid + ", days=" + days + ", wages=" + wages + "]";
 	}
 	   
 	   
 }
-

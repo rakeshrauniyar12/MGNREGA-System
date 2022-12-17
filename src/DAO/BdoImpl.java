@@ -1,6 +1,5 @@
 package DAO;
 
-import java.util.List;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,16 +17,17 @@ import Model.Project;
 import util.ProvideConnection;
 
 public class BdoImpl implements BdoInter{
-@Override
-	public String createProject(int pid, String pname, Date issue_date, Date end_date) throws BDOException {
+
+	@Override
+	public String createProject(int pid, String pname, String issue_date, String end_date) throws BDOException {
 		String massage="Not Created";
 		try(Connection conn=ProvideConnection.provideConnection()){
 			
 			PreparedStatement ps=conn.prepareStatement("insert into project values(?,?,?,?)");
 			ps.setInt(1,pid);
 			ps.setString(2,pname);
-			ps.setDate(3, issue_date);
-			ps.setDate(4, end_date);
+			ps.setString(3, issue_date);
+			ps.setString(4, end_date);
 			int x=ps.executeUpdate();
 			if(x>0) {
 				massage="Created";
@@ -51,8 +51,8 @@ public class BdoImpl implements BdoInter{
 				while(rs.next()) {
 					  int pid=rs.getInt("pid");
 					  String name=rs.getString("pname");
-					  Date date=rs.getDate("issue_date");
-					  Date date1= rs.getDate("end_date");
+					  String date=rs.getString("issue_date");
+					  String date1= rs.getString("end_date");
 					Project p= new Project();
 					p.setPid(pid);
 					p.setPname(name);
@@ -117,14 +117,14 @@ public class BdoImpl implements BdoInter{
 	}
 
 	@Override
-	public String allocatesProjectToGpm(int gid, String gname, int pid, Date allocates_date) throws BDOException {
+	public String allocatesProjectToGpm(int gid, String gname, int pid, String allocates_date) throws BDOException {
 		   String massage="Not Allocated";
 		   try(Connection conn=ProvideConnection.provideConnection()){
 			    PreparedStatement ps= conn.prepareStatement("insert into gpmwork values(?,?,?,?)");
 			    ps.setInt(1, gid);
 			    ps.setString(2, gname);
 			    ps.setInt(3,pid);
-			    ps.setDate(4, allocates_date);
+			    ps.setString(4, allocates_date);
 			    int x=ps.executeUpdate();
 			    if(x>0) {
 			    	massage="Allocated";
@@ -140,8 +140,12 @@ public class BdoImpl implements BdoInter{
 	public List<EmpDTO> viewAllDetailsOfEmp(int gid, int pid) throws EmpException {
 		List<EmpDTO> list= new ArrayList<>();
 		try(Connection conn=ProvideConnection.provideConnection()){
-			PreparedStatement ps=conn.prepareStatement(" select e.ename,e.gid,e.days,e.wages from emp e inner join gpmwork g inner join project p on p.pid=g.gid and e.gid=g.gid");
-		ResultSet rs=ps.executeQuery();
+			PreparedStatement ps=conn.prepareStatement(" select e.ename,e.gid,e.days,e.wages from emp e inner join gpmwork g inner join project p on p.pid=? and e.pid=? and e.gid=? and g.gid=?");
+		    ps.setInt(1, pid);
+		    ps.setInt(2, pid);
+		    ps.setInt(3, gid);
+		    ps.setInt(4, gid);
+			ResultSet rs=ps.executeQuery();
 		while(rs.next()) {
 			String name=rs.getString("ename");
 			int id=rs.getInt("gid");
@@ -161,6 +165,7 @@ public class BdoImpl implements BdoInter{
 		
 		return list;
 	}
+
 
 
 }
